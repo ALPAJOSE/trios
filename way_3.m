@@ -22,7 +22,7 @@ function varargout = way_3(varargin)
 
 % Edit the above text to modify the response to help way_3
 
-% Last Modified by GUIDE v2.5 18-Feb-2017 06:59:27
+% Last Modified by GUIDE v2.5 18-Feb-2017 11:57:23
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -39,7 +39,7 @@ end
 if nargout
     [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
 else
-    gui_mainfcn(gui_State, varargin);
+    gui_mainfcn(gui_State, varargin{:});
 end
 % End initialization code - DO NOT EDIT
 
@@ -88,6 +88,7 @@ b=imresize(a,[300,300]);
 c_edge=edge(b,'sobel');
 h=bwarea(c_edge);
 disp(h);
+imshow(I1);
 
 axes(handles.axes2);
 I2=imread('ref - Copy.png');   %ccc-0.3831; cc0.42   c-0.166
@@ -99,6 +100,7 @@ e=imresize(d,[300,300]);
 f_edge=edge(e,'sobel');
 j=bwarea(f_edge);
 disp(j)
+imshow(I2);
 percentage1 =((j-h)/j)*100;
 disp(percentage1)
 
@@ -128,6 +130,8 @@ m=imresize(k,[300,300]);
 n_edge=edge(l,'sobel');
 o=bwarea(n_edge);
 disp(o);
+imshow(I3);
+%h=bwarea(c_edge);
 percentage2 =((o-h)/o)*100; 
 disp(percentage2)
 
@@ -154,10 +158,11 @@ p=rgb2gray(I4);
 q=im2bw(I4);
 
 
-r=imresize(d,[300,300]);
+r=imresize(p,[300,300]);
 s_edge=edge(e,'sobel');
 t=bwarea(s_edge);
 disp(t)
+imshow(I4);
 percentage3 =((t-h)/t)*100; 
 disp(percentage3)
 
@@ -171,3 +176,10 @@ else
     disp('green light on for 10s')
 end
 set((handles.p3),'string',percentage3);
+
+
+% --- Executes during object creation, after setting all properties.
+function p2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to p2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
